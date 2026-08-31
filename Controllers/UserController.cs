@@ -8,8 +8,17 @@ namespace MyFirstApi.Controllers;
 public class UserController : ControllerBase
 {
     [HttpGet]
-    public IActionResult Get()
+    [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+    public IActionResult Get([FromHeader] int id, [FromHeader]  string nickname)
     {
-        return Ok("Nome");
+        var response = new User
+        {
+            Id = 1,
+            Age = 20,
+            Name = "John Doe"
+        };
+
+        return Ok(response);
     }
 }

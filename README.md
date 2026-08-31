@@ -11,6 +11,7 @@ Este projeto faz parte dos meus estudos em desenvolvimento backend e foi criado 
 - ASP.NET Core
 - Swagger / OpenAPI
 - Visual Studio
+- Postman
 
 ## 📚 Conceitos praticados
 
