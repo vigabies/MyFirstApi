@@ -1,0 +1,19 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Build
+bin/
+obj/
+
+## Rider
+.idea/
+
+## Visual Studio Code
+.vscode/
+
+## User-specific files
+*.user
+*.rsuser
+*.suo
