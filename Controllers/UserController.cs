@@ -4,10 +4,8 @@ using MyFirstApi.Comunication.Responses;
 
 namespace MyFirstApi.Controllers;
 
-[Route("api/[controller]")] //atributo obrigatório para definir a rota do controller
-[ApiController] //significa que é um controller de API, habilitando recursos como validação automática de modelo e respostas automáticas para erros de validação
-
-public class UserController : ControllerBase
+public class UserController : MyFirstApiBaseController //isso é herança porque a classe UserController está herdando da classe MyFirstApiBaseController
+                                                       //o que significa que ela pode acessar os métodos e propriedades da classe base, além de poder sobrescrever ou adicionar novos comportamentos específicos para a classe derivada.
 {
     [HttpGet] //isso é um endpoint que responde a requisições HTTP GET, significando que ele é usado para recuperar recursos do servidor
     [Route("{id}")]
@@ -56,7 +54,6 @@ public class UserController : ControllerBase
 
     [HttpGet]
     [ProducesResponseType(typeof(List<User>), StatusCodes.Status200OK)]
-
     public IActionResult GetAll(int id)
     {
         var response = new List<User>()
@@ -78,10 +75,15 @@ public class UserController : ControllerBase
         return Ok(response);
     }
 
-
-
+    [HttpPut("change-password")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult ChangePassword([FromBody] RequestChangePasswordJson request)
+    {
+        return NoContent();
+    }
 
 
 
 }
+
 
