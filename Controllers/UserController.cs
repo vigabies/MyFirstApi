@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyFirstApi.Comunication.Requests;
+using MyFirstApi.Comunication.Responses;
 
 namespace MyFirstApi.Controllers;
 
@@ -7,10 +9,11 @@ namespace MyFirstApi.Controllers;
 
 public class UserController : ControllerBase
 {
-    [HttpGet]
+    [HttpGet] //isso é um endpoint que responde a requisições HTTP GET, significando que ele é usado para recuperar recursos do servidor
+    [Route("{id}")]
     [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-    public IActionResult Get([FromHeader] int id, [FromHeader]  string nickname)
+    public IActionResult GetById([FromRoute] int id)
     {
         var response = new User
         {
@@ -21,4 +24,19 @@ public class UserController : ControllerBase
 
         return Ok(response);
     }
+    
+    
+    [HttpPost] //isso é um endpoint que responde a requisições HTTP POST, significando que ele é usado para criar novos recursos no servidor
+    [ProducesResponseType(typeof(ResponseRegisterUsersJson), StatusCodes.Status201Created)]
+    public IActionResult Create([FromBody]RequestRegisterUserJson request)
+    {
+        var response = new ResponseRegisterUsersJson
+        {
+            Id = 1,
+            UserName = request.Name
+        };
+
+        return Created(string.Empty, response);
+    }
 }
+
