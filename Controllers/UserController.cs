@@ -38,5 +38,50 @@ public class UserController : ControllerBase
 
         return Created(string.Empty, response);
     }
+
+    [HttpPut]//isso é um endpoint que responde a requisições HTTP PUT, significando que ele é usado para atualizar recursos existentes no servidor
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public IActionResult Update([FromBody]RequestUpdateUserProfileJson request)// isso é um public de Update que significa que ele é usado para atualizar recursos existentes no servidor
+    {
+        return NoContent();
+    }
+
+    [HttpDelete]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+   //get e delet nao recebe requisição no body
+    public IActionResult Delete()
+    {
+        return NoContent();
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(List<User>), StatusCodes.Status200OK)]
+
+    public IActionResult GetAll(int id)
+    {
+        var response = new List<User>()
+        {
+            new User
+            {
+                Id = 1,
+                Age = 10,
+                Name = "Antony"
+            },
+
+             new User
+            {
+                Id = 2,
+                Age = 20,
+                Name = "Selena"
+            },
+        };
+        return Ok(response);
+    }
+
+
+
+
+
+
 }
 
