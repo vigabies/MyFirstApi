@@ -11,4 +11,15 @@ namespace MyFirstApi.Controllers;
 public class MyFirstApiBaseController : ControllerBase
 {
     public string Author { get; set; } = "Oscar Wilde";
+
+    [HttpGet("heathy")]
+    public IActionResult Heathy()
+    {
+        return Ok("Its working");
+    }
+
+    protected string GetCustomKey()
+    {
+        return Request.Headers["MyKey"].ToString();
+    }
 }

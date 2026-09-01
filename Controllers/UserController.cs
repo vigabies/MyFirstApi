@@ -58,21 +58,12 @@ public class UserController : MyFirstApiBaseController //isso é herança porque
     {
         var response = new List<User>()
         {
-            new User
-            {
-                Id = 1,
-                Age = 10,
-                Name = "Antony"
-            },
-
-             new User
-            {
-                Id = 2,
-                Age = 20,
-                Name = "Selena"
-            },
+            new User {Id = 1, Age = 10, Name = "Antony"},
+            new User {Id = 2, Age = 20, Name = "Selena"},
         };
-        return Ok(response);
+
+        var key = GetCustomKey();
+        return Ok(key);
     }
 
     [HttpPut("change-password")]
@@ -81,8 +72,6 @@ public class UserController : MyFirstApiBaseController //isso é herança porque
     {
         return NoContent();
     }
-
-
 
 }
 

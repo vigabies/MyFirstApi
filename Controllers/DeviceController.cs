@@ -14,13 +14,9 @@ public class DeviceController : MyFirstApiBaseController
     [HttpGet]
     public IActionResult Get()
     {
-        var laptop = new Laptop();
+        var key = GetCustomKey();
 
-        var test = laptop.GetTest();  
-
-        var model = laptop.GetModel();
-
-        return Ok(model);
+        return Ok(key);
 
     }
 }

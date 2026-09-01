@@ -2,7 +2,7 @@
 
 namespace MyFirstApi.Entities;
 
-public class Laptop : Device //herança  
+public sealed class Laptop : Device // nome:nome significa herança, sealed significa que a classe não pode ser herdada por outras classes, ou seja, é uma classe final.
 {
     public override string GetBrand() //override significa que estamos sobrescrevendo o método da classe base, fornecendo uma implementação específica para a classe derivada.
     {
