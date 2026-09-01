@@ -11,4 +11,9 @@ public class Laptop : Device //herança
 
         return "Unknow";
     } 
+
+    public override string GetBrand()
+    {
+        return "Apple";
+    }
 }
